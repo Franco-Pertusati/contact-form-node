@@ -5,11 +5,16 @@ const transporter = require("./utils/transporter");
 require("dotenv").config();
 
 app.use(express.json());
-app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
+const corsOptions = {
+  origin: process.env.CORS,
+};
+
+app.use(cors(corsOptions));
 
 app.post("/api/contact/send", function (req, res) {
   const { text, subject, name, company } = req.body
