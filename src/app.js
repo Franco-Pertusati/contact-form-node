@@ -17,7 +17,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.post("/api/contact/send", function (req, res) {
-  const { text, subject, name, company } = req.body
+  const { text, subject, name } = req.body
 
   transporter.sendMail(
     {
@@ -28,7 +28,6 @@ app.post("/api/contact/send", function (req, res) {
         Nuevo mensaje desde el formulario de contacto:
 
         Nombre: ${name}
-        Empresa: ${company}
         Mensaje: ${text}`,
     },
     function (error, info) {
